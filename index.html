@@ -1,244 +1,96 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bay Kaptan Oto Çekici - İstanbul'un Güvenilir Çekici Hizmeti</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #ffc107; /* Sarı - Çekici/Uyarı Rengi */
-            --secondary-color: #343a40; /* Koyu Gri/Siyah - Zemin Rengi */
-            --text-color: #fff;
-            --district-color: #0d6efd; /* Mavi */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bay Kaptan Oto Çekici</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
 
-        body {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+    header {
+      background: #000;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+    }
 
-        .header-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://tuzlaotokurtarma.com.tr/BlogResim/blog-451cekici2.jpg');
-            background-size: cover;
-            padding: 100px 0;
-            color: white;
-            text-align: center;
-        }
+    .hero {
+      padding: 40px 20px;
+    }
 
-        .phone-call-btn {
-            font-size: 1.5rem;
-            padding: 15px 30px;
-            animation: pulse 1.5s infinite;
-            transition: background-color 0.3s ease;
-            position: relative; /* Sahte tıklama önleme için */
-            z-index: 10;
-        }
+    .hero img {
+      width: 90%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 193, 7, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
-        }
+    .call-button {
+      display: inline-block;
+      background: #e60000;
+      color: #fff;
+      font-size: 26px;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
 
-        /* Sahte Tıklama Önleme Mekanizması */
-        .fake-click-shield {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            z-index: 1000; /* Butondan daha yüksek */
-            cursor: pointer;
-            display: none; /* Başlangıçta gizli */
-        }
-        .header-section:hover .fake-click-shield {
-            display: block; /* Sadece fare üstüne gelince görünür yap */
-        }
-        /* JS ile açılıp kapanan pop-up stilizasyonu */
-        .popup-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 400px;
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
 
-        .district-list {
-            columns: 3; /* 3 sütunlu liste */
-            list-style: none;
-            padding: 0;
-        }
+    .services {
+      padding: 30px;
+    }
 
-        .district-list li {
-            padding: 5px 0;
-            font-weight: bold;
-            color: var(--district-color);
-        }
+    .services h2 {
+      color: #FFD700;
+    }
 
-        @media (max-width: 768px) {
-            .district-list {
-                columns: 2;
-            }
-        }
-    </style>
+    .services p {
+      font-size: 18px;
+    }
+
+    footer {
+      background: #000;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
 
-    <header class="header-section">
-        <div class="container">
-            <h1 class="display-2 fw-bold text-uppercase text-warning">BAY KAPTAN OTO ÇEKİCİ 🚨</h1>
-            <p class="lead my-4">İstanbul'un her noktasında, 7/24 Hızlı ve Güvenilir Çekici Hizmeti!</p>
-            <div class="position-relative d-inline-block">
-                <div class="fake-click-shield" id="callShield"></div>
-                
-                <a href="tel:+905516756624" class="btn btn-warning btn-lg phone-call-btn">
-                    <i class="fas fa-phone-alt"></i> HEMEN ARA: +90 (551) 675 66 24
-                </a>
-            </div>
-            <p class="mt-3 text-muted">7/24 Yol Yardım Hattı</p>
-        </div>
-    </header>
+<header>
+  Bay Kaptan Oto Çekici
+</header>
 
-    <section class="container py-5">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <i class="fas fa-truck fa-3x text-warning mb-3"></i>
-                <h3 class="text-white">Hızlı Çekme</h3>
-                <p>En kısa sürede olay yerine ulaşıyor, aracınızı güvenle istediğiniz yere taşıyoruz.</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-clock fa-3x text-warning mb-3"></i>
-                <h3 class="text-white">7/24 Kesintisiz</h3>
-                <p>Gece/Gündüz fark etmeksizin, her an yol yardımına hazırız.</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-map-marked-alt fa-3x text-warning mb-3"></i>
-                <h3 class="text-white">İstanbul Geneli</h3>
-                <p>İstanbul'un tüm ilçe ve mahallelerine kesintisiz hizmet.</p>
-            </div>
-        </div>
-    </section>
-    
-    <hr class="border border-warning opacity-75">
-
-    <section class="container py-5">
-        <h2 class="text-center mb-4 text-warning">🗺️ Hizmet Bölgelerimiz: TÜM İSTANBUL İLÇELERİ</h2>
-        <p class="text-center lead mb-5">Bay Kaptan Çekici olarak, İstanbul'un aşağıdaki tüm ilçelerinde anında hizmetinizdeyiz.</p>
-
-        <ul class="district-list mx-auto">
-            <li>Adalar oto çekici </li>
-            <li>Arnavutköy oto çekici </li>
-            <li>Ataşehir oto çekici </li>
-            <li>Avcılar oto çekici </li>
-            <li>Bağcılar oto çekici </li>
-            <li>Bahçelievler oto çekici </li>
-            <li>Bakırköy oto çekici </li>
-            <li>Başakşehir oto çekici </li>
-            <li>Bayrampaşa oto çekici </li>
-            <li>Beşiktaş oto çekici </li>
-            <li>Beykoz oto çekici </li>
-            <li>Beylikdüzü oto çekici </li>
-            <li>Beyoğlu oto çekici </li>
-            <li>Büyükçekmece oto çekici </li>
-            <li>Çatalca oto çekici </li>
-            <li>Çekmeköy oto çekici </li>
-            <li>Esenler oto çekici </li>
-            <li>Esenyurt oto çekici </li>
-            <li>Eyüpsultan oto çekici </li>
-            <li>Fatih oto çekici </li>
-            <li>Gaziosmanpaşa oto çekici </li>
-            <li>Güngören oto çekici </li>
-            <li>Kadıköy oto çekici </li>
-            <li>Kağıthane oto çekici </li>
-            <li>Kartal oto çekici </li>
-            <li>Küçükçekmece oto çekici </li>
-            <li>Maltepe oto çekici </li>
-            <li>Pendik oto çekici </li>
-            <li>Sancaktepe oto çekici </li>
-            <li>Sarıyer oto çekici </li>
-            <li>Silivri oto çekici </li>
-            <li>Sultanbeyli oto çekici </li>
-            <li>Sultangazi oto çekici </li>
-            <li>Şile oto çekici </li>
-            <li>Şişli oto çekici </li>
-            <li>Tuzla oto çekici </li>
-            <li>Ümraniye oto çekici </li>
-            <li>Üsküdar oto çekici </li>
-            <li>Zeytinburnu oto çekici </li>
-        </ul>
-    </section>
-
-   
-
-    <footer class="bg-dark text-center py-4 mt-5">
-        <p class="mb-0 text-white">&copy; 2025 Bay Kaptan Oto Çekici. Tüm Hakları Saklıdır.</p>
-        <p class="mb-0 text-warning fw-bold">7/24 Acil Hattı: +0 (551) 675 66 24</p>
-    </footer>
-   
-<div class="popup-modal" id="antiClickModal">
-    <div class="modal-content text-center p-4">
-        <h3 class="mb-3">☎️ ARAMA ONAYI</h3>
-        <p>Lütfen arama yapmak istediğinizi onaylayın. <br> 
-           <small class="text-muted">Güvenliğiniz için bu adım gereklidir.</small>
-        </p>
-        
-        <div class="d-grid gap-2 d-md-block mt-4">
-            <button class="btn btn-dark px-4" onclick="allowCall()">ŞİMDİ ARA</button>
-            <button class="btn btn-outline-dark px-4" onclick="closeModal()">İPTAL</button>
-        </div>
-    </div>
+<div class="hero">
+  <img src="data:image/jpeg;base64,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" alt="Oto Çekici">
+  <br>
+  <a class="call-button" href="tel:+905516756624">📞 Hemen Ara: 0551 675 66 24</a>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <script>
-        const callShield = document.getElementById('callShield');
-        const callBtn = document.querySelector('.phone-call-btn');
-        const modal = document.getElementById('antiClickModal');
+<div class="services">
+  <h2>Hizmetlerimiz</h2>
+  <p>7/24 Oto Çekici Hizmeti</p>
+  <p>Yolda Kalan Araçlara Acil Müdahale</p>
+  <p>Şehir İçi ve Şehirler Arası Taşıma</p>
+</div>
 
-        // 1. Sahte Tıklama Önleme Mekanizması
-        // Kullanıcı butona tıkladığında (aslında butonu kapatan şeffaf kalkan'a tıkladığında) modal açılır.
-        callShield.addEventListener('click', function(event) {
-            event.preventDefault(); // Varsayılan a:href davranışını engelle
-            modal.style.display = 'block';
-            callShield.style.display = 'none'; // Modal açıkken kalkanı gizle
-        });
+<footer>
+  © 2026 Bay Kaptan Oto Çekici - Tüm Hakları Saklıdır
+</footer>
 
-        // 2. Arama İşlemini Başlatma
-        function allowCall() {
-            closeModal();
-            // Arama numarasını doğrudan yönlendir
-            window.location.href = callBtn.href; 
-        }
-
-        // 3. Modalı Kapatma
-        function closeModal() {
-            modal.style.display = 'none';
-            // Modal kapandıktan sonra kalkanı tekrar aç
-            setTimeout(() => {
-                callShield.style.display = 'block'; 
-            }, 100); 
-        }
-
-        // İPUCU: Gerçek tıklama olduğunda butona direkt gitmesi için kalkanı kaldırıyoruz
-        // Bu kısım, kalkanın tam olarak ne zaman kalkacağını ayarlamak için eklenmiştir.
-        callBtn.addEventListener('mouseenter', () => {
-             callShield.style.display = 'block'; // Farenin butona gelmesi ile kalkan devreye girer
-        });
-        callBtn.addEventListener('mouseleave', () => {
-             callShield.style.display = 'block'; // Çıkınca da devrede kalır
-        });
-    </script>
 </body>
 </html>
